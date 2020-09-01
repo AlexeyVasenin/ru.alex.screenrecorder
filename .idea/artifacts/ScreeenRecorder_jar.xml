@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ScreeenRecorder:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ScreeenRecorder_jar</output-path>
+    <root id="archive" name="ru.alex.screenrecorder.jar">
+      <element id="module-output" name="ru.alex.screenrecorder" />
+    </root>
+  </artifact>
+</component>
