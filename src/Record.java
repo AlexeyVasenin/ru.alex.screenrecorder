@@ -6,22 +6,38 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Record {
+public class Record extends Thread {
 
-    private static SimpleDateFormat formatter = new SimpleDateFormat(
+    private static final SimpleDateFormat formatter = new SimpleDateFormat(
             "yyyyMMdd_HHmmss");
 
-    public void screenRecorder() throws AWTException, IOException,
-            InterruptedException {
+    public void run() {
+        while (true) {
+            Calendar now = Calendar.getInstance();
+            Robot robot = null;
+            try {
+                robot = new Robot();
+            } catch (AWTException e) {
+                e.printStackTrace();
+            }
 
-        Calendar now = Calendar.getInstance();
-        Robot robot = new Robot();
-        BufferedImage image =
-                robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-        ImageIO.write(image, "PNG", new File("C:\\Users\\vasenin_ak\\Desktop" +
-                "\\ScreenDesctop\\" + formatter.format(now.getTime()) + ".png"
-        ));
-        System.out.println(image.getWidth() + "x" + image.getHeight());
+            BufferedImage image =
+                    robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+            try {
+                ImageIO.write(image, "PNG", new File("C:/Users/alexx/Desktop" +
+                        "/Doc/screen/" + formatter.format(now.getTime()) +
+                        ".png"
+                ));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            //System.out.println(image.getWidth() + "x" + image.getHeight());
+            try {
+                sleep(1500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-}
 
+    }
+}
