@@ -6,7 +6,7 @@ public class Main {
         FormScreen form = new FormScreen();
         form.pack();
         form.setResizable(false);
-        form.setSize(new Dimension(200,100));
+//        form.setSize(new Dimension(350,100));
         form.setVisible(true);
     }
 }

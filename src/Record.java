@@ -11,7 +11,31 @@ public class Record extends Thread {
     private static final SimpleDateFormat formatter = new SimpleDateFormat(
             "yyyyMMdd_HHmmss");
 
-    public void run() {
+    Integer secondRecord;
+
+    public Record(Integer secondRecord)
+    {
+        this.secondRecord = secondRecord;
+    }
+
+    public Record()
+    {
+
+    }
+
+    public Integer getSecondRecord()
+    {
+        return secondRecord;
+    }
+
+
+    public void setSecondRecord(Integer secondRecord)
+    {
+        this.secondRecord = secondRecord;
+    }
+
+    public void run()
+    {
         while (true) {
             Calendar now = Calendar.getInstance();
             Robot robot = null;
@@ -21,8 +45,8 @@ public class Record extends Thread {
                 e.printStackTrace();
             }
 
-            BufferedImage image =
-                    robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+            BufferedImage image;
+            image = robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
             try {
                 ImageIO.write(image, "PNG", new File("C:/Users/alexx/Desktop" +
                         "/Doc/screen/" + formatter.format(now.getTime()) +
@@ -33,7 +57,7 @@ public class Record extends Thread {
             }
             //System.out.println(image.getWidth() + "x" + image.getHeight());
             try {
-                sleep(1500);
+                sleep(secondRecord);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
